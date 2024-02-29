@@ -1,0 +1,65 @@
+body {
+    display: flex;
+    justify-content: center; /* 수평 중앙 정렬 */
+    align-items: center; /* 수직 중앙 정렬 */
+    height: 100vh; /* 뷰포트 높이를 전체 사용 */
+    margin: 0; /* 기본 마진 제거 */
+}
+#gameBoard {
+    display: grid;
+    grid-template-columns: repeat(15, 30px);
+    grid-template-rows: repeat(15, 30px);
+    background-color: #a07009;
+}
+
+.cell {
+    width: 30px;
+    height: 30px;
+    background-color: #D2B48C;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.cell::before,
+.cell::after {
+    content: '';
+    position: absolute;
+    background-color: black;
+    z-index: 1;
+}
+
+.cell::before {
+    /* 수직선 */
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+}
+
+.cell::after {
+    /* 수평선 */
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+}
+
+.stone {
+    position: absolute;
+    border-radius: 50%;
+    width: 80%;
+    height: 80%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2; /* 돌이 격자 선보다 위에 표시되도록 설정 */
+}
+
+.black {
+    background-color: black;
+}
+
+.white {
+    background-color: white;
+}
